@@ -1,3 +1,4 @@
+// "use client";
 import { GetFormById, GetFormSubmissions } from "@/app/actions/form";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -24,7 +25,9 @@ import {
 } from "../../_components/FormElements";
 import FormLinkShare from "../../_components/FormLinkShare";
 import VisitBtn from "../../_components/VisitBtn";
-import { headers } from "next/headers";
+// import { headers } from "next/headers";
+import * as XLSX from "xlsx";
+import dynamic from "next/dynamic";
 
 export default async function FormDetailsPage({
   params,
@@ -34,10 +37,10 @@ export default async function FormDetailsPage({
   const { id } = params;
 
   const form = await GetFormById(Number(id));
-  const headerList = headers();
+  // const headerList = headers();
 
-  const host = headerList.get("host");
-  const protocol = headerList.get("x-forwarded-proto") ?? "http";
+  const host = process.env.DOMAIN;
+  // const protocol = "http";
 
   if (!form) {
     throw new Error("Form not found");
@@ -53,13 +56,15 @@ export default async function FormDetailsPage({
 
   const bounceRate = 100 - submissionsRate;
 
-  const shareLink = `${protocol}://${host}/submit/${form.shareUrl}`;
+  const shareLink = `${host}/submit/${form.shareUrl}`;
 
   return (
     <>
       <div className="py-1">
-        <div className="container flex justify-between">
-          <h1 className="truncate text-4xl font-bold">{form.name}</h1>
+        <div className="container flex items-center justify-between">
+          <h1 className="truncate md:text-4xl text-xl md:font-bold font-medium">
+            {form.name}
+          </h1>
           <VisitBtn shareUrl={shareLink} />
         </div>
         <div className="border-b border-muted py-4">
@@ -104,7 +109,7 @@ export default async function FormDetailsPage({
       </div>
       <div className="container pt-10">
         {/* Ini table submission */}
-        <SubMissionTable id={form.id} />
+        <SubmissionTable id={form.id} />
       </div>
     </>
   );
@@ -114,7 +119,7 @@ type Row = { [key: string]: string } & {
   submitted: string;
 };
 
-async function SubMissionTable({ id }: { id: number }) {
+async function SubmissionTable({ id }: { id: number }) {
   const form = await GetFormSubmissions(Number(id));
 
   if (!form) {
@@ -162,7 +167,12 @@ async function SubMissionTable({ id }: { id: number }) {
 
   return (
     <>
-      <h2 className="my-4 text-2xl font-bold">Table Submissions</h2>
+      <div className="flex md:justify-between md:flex-row flex-col space-y-1 items-center pb-5">
+        <h2 className="my-4 md:text-2xl text-xl font-bold">
+          Submission Result
+        </h2>
+        <DynamicExportButton rows={rows} columns={columns} />
+      </div>
       <Table>
         <TableHeader>
           <TableRow>
@@ -198,6 +208,13 @@ async function SubMissionTable({ id }: { id: number }) {
     </>
   );
 }
+
+const DynamicExportButton = dynamic(
+  () => import("../../_components/ExportButton"),
+  {
+    ssr: false, // Disable Server Side Rendering
+  }
+);
 
 function RowCell({ type, value }: { type: ElementsType; value: string }) {
   let node: ReactNode = value;
