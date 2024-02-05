@@ -5,6 +5,16 @@ import { Suspense } from "react";
 import CreateFormBtn from "../_components/CreateFormBtn";
 import FormCardSkeleton from "../_components/FormCardSkeleton";
 import FormCards from "../_components/FormCards";
+import { Metadata } from "next";
+import { METADATA } from "@/lib/metadata";
+
+export const metadata: Metadata = {
+  title: `Dashboard ${METADATA.exTitle}`,
+  description: "Dashboard for all your forms",
+  alternates: {
+    canonical: `${process.env.DOMAIN}/dashboard`,
+  },
+};
 
 export default function DashboardPage() {
   return (

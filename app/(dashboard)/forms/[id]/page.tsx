@@ -28,6 +28,24 @@ import VisitBtn from "../../_components/VisitBtn";
 // import { headers } from "next/headers";
 import * as XLSX from "xlsx";
 import dynamic from "next/dynamic";
+import { Metadata } from "next";
+import { METADATA } from "@/lib/metadata";
+
+export async function generateMetadata({ params }: { params: { id: number } }) {
+  const form = await GetFormById(Number(params.id));
+  if (!form) {
+    return {
+      title: "Form not found",
+    };
+  }
+  return {
+    title: `${form.name} ${METADATA.exTitle}`,
+    description: form.description,
+    alternates: {
+      canonical: `${process.env.DOMAIN}/forms/${params.id}`,
+    },
+  };
+}
 
 export default async function FormDetailsPage({
   params,
@@ -39,7 +57,10 @@ export default async function FormDetailsPage({
   const form = await GetFormById(Number(id));
   // const headerList = headers();
 
-  const host = process.env.DOMAIN;
+  const host =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : process.env.DOMAIN;
   // const protocol = "http";
 
   if (!form) {
