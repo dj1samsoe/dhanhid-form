@@ -13,17 +13,13 @@ export default function DashboardPage() {
       <Suspense fallback={<StatsCard loading={true} />}>
         <CardStatsWrapper />
       </Suspense>
-      <div className="flex md:flex-row flex-col space-y-2 md:items-center items-start md:justify-between pt-10">
-        <h2 className="text-4xl font-bold">All Your Forms</h2>
+      <div className="flex md:flex-row flex-col space-y-2 items-center md:justify-between pt-10">
+        <h2 className="md:text-4xl text-2xl font-bold">All Your Forms</h2>
         <CreateFormBtn />
       </div>
       <Separator className="my-6" />
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <Suspense
-          fallback={[...Array(5)].map((_, i) => (
-            <FormCardSkeleton key={i} />
-          ))}
-        >
+        <Suspense fallback={<FormCardSkeleton />}>
           <FormCards />
         </Suspense>
       </div>

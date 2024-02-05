@@ -17,7 +17,7 @@ export default function VisitBtn({ shareUrl }: { shareUrl: string }) {
   }
 
   return (
-    <Button variant={"secondary"} asChild>
+    <Button variant={"default"} asChild>
       <Link href={shareUrl} target="_blank" rel="noopener noreferrer">
         <Globe className="mr-2 h-4 w-4" />
         Visit Form

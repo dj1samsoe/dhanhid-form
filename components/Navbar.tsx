@@ -14,14 +14,14 @@ export default function Navbar() {
   const isMobile = useIsMobile();
 
   return (
-    <nav className="fixed top-0 z-50 w-full bg-background flex items-center justify-between border-b border-border lg:px-20 px-5 py-3 shadow-md">
+    <nav className="fixed top-0 z-50 w-full bg-background flex items-center justify-between border-b border-border lg:px-10 px-5 py-3 shadow-md">
       <Logo />
       <div className="flex items-center md:gap-2 gap-1">
         <ThemeSwitcher />
         {user && (
           <>
             <Button asChild variant={"link"}>
-              <Link href={"/dashboard"} className="text-lg">
+              <Link href={"/dashboard"} className="text-md">
                 Dashboard
               </Link>
             </Button>

@@ -6,7 +6,7 @@ import { soria } from "@/lib/fonts";
 import { hero } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { useUser } from "@clerk/nextjs";
-import { ChevronRight, Github } from "lucide-react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import reactStringReplace from "react-string-replace";
@@ -16,8 +16,12 @@ export default function Hero() {
 
   return (
     <section className="py-10 px-5">
-      <div className="flex min-h-screen flex-col items-center justify-center py-10 delay-200 duration-1000 animate-in fade-in slide-in-from-top-6">
-        <h1
+      <div className="flex min-h-screen flex-col items-center justify-center py-10 delay-200 duration-1000">
+        <motion.h1
+          initial={{ opacity: 0, y: -50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
           className={cn(
             soria.className,
             "lg:text-6xl xl:text-8xl mt-8 tracking-wide font-extrabold text-center text-5xl capitalize"
@@ -33,12 +37,24 @@ export default function Hero() {
               <br />
             </span>
           ))}
-        </h1>
-        <h2 className="mx-auto mb-8 mt-6 max-w-4xl px-5 text-center sm:px-0 md:text-lg/relaxed lg:text-base/relaxed">
+        </motion.h1>
+        <motion.h2
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="mx-auto mb-8 mt-6 max-w-4xl px-5 text-center sm:px-0 md:text-lg/relaxed lg:text-base/relaxed"
+        >
           Design and customize your forms and surveys with our easy to use drag
           and drop form builder.
-        </h2>
-        <div className="flex items-center gap-2">
+        </motion.h2>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="flex items-center gap-2"
+        >
           {isSignedIn ? (
             <Button asChild>
               <Link href={"/dashboard"} className="text-zinc-50">
@@ -55,7 +71,7 @@ export default function Hero() {
           <Button asChild variant={"outline"}>
             <Link href={"/sign-in"}>Sign In</Link>
           </Button>
-        </div>
+        </motion.div>
         {/* <div className="mt-16 flex justify-center px-5 sm:px-0">
           <Image
             src="/form-builder-dark.png"

@@ -16,7 +16,8 @@ export const featuresItem = [
   },
   {
     title: "Manage Your Forms",
-    description: "You can manage your forms with a simple dashboard.",
+    description:
+      "You can manage your forms with a simple dashboard. Then you can export your forms into Microsoft Excel for datasets.",
   },
 ];
 

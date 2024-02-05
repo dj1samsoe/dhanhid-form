@@ -1,14 +1,22 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { soria } from "@/lib/fonts";
 import { cta } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import reactStringReplace from "react-string-replace";
 
 export default function CallToAction() {
   return (
     <section className="mx-auto mt-10 max-w-xl px-6 py-24 text-center">
-      <div className="flex flex-col items-center justify-center rounded-xl border border-border p-10 shadow-xl">
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+        className="flex flex-col items-center justify-center rounded-xl border border-border p-10 shadow-xl"
+      >
         <h2
           className={cn(soria.className, "text-4xl font-semibold sm:text-6xl")}
         >
@@ -35,7 +43,7 @@ export default function CallToAction() {
             Github Repo
           </Link>
         </Button>
-      </div>
+      </motion.div>
     </section>
   );
 }
