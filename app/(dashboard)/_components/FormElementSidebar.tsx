@@ -10,24 +10,20 @@ export default function FormElementsSidebar() {
   };
 
   return (
-    <div>
-      <p className="text-sm text-foreground/70 md:block hidden">
-        Drag and Drop Elements
-      </p>
+    <div className="flex flex-col gap-2">
+      <p className="text-sm text-foreground/70">Drag and Drop Elements</p>
       <Separator className="my-2" />
-      <div className="flex flex-col items-start place-items-center gap-4">
-        <p className="col-span-1 my-2 place-self-start text-sm md:col-span-2">
-          Layout
-        </p>
+      <div className="grid grid-cols-2 items-start place-items-center gap-4">
+        <p className="my-2 place-self-start text-sm col-span-2">Layout</p>
         <SidebarBtnElement formElement={FormElements.TitleField} />
         <SidebarBtnElement formElement={FormElements.SubTitleField} />
         <SidebarBtnElement formElement={FormElements.ParagraphField} />
         <SidebarBtnElement formElement={FormElements.SeperatorField} />
         <SidebarBtnElement formElement={FormElements.SpacerField} />
-
-        <p className="col-span-1 my-2 place-self-start text-sm md:col-span-2">
-          Form
-        </p>
+      </div>
+      <Separator className="my-2" />
+      <div className="grid grid-cols-2 items-start place-items-center gap-4">
+        <p className="my-2 place-self-start text-sm col-span-2">Form</p>
         <SidebarBtnElement formElement={FormElements.TextField} />
         <SidebarBtnElement formElement={FormElements.EmailField} />
         <SidebarBtnElement formElement={FormElements.NumberField} />

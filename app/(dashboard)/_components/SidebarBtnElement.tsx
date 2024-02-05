@@ -24,14 +24,14 @@ export default function SidebarBtnElement({
       ref={draggable.setNodeRef}
       variant={"outline"}
       className={cn(
-        "flex items-center gap-2 cursor-grab",
+        "flex flex-col h-[120px] w-[120px] items-center gap-2 cursor-grab",
         draggable.isDragging && "ring-2 ring-primary"
       )}
       {...draggable.attributes}
       {...draggable.listeners}
     >
       {icon}
-      <p className="text-xs md:block hidden">{label}</p>
+      <p className="text-xs">{label}</p>
     </Button>
   );
 }
