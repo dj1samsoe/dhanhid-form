@@ -4,12 +4,14 @@ import React, { PropsWithChildren } from "react";
 
 export default function LayoutSubmit({ children }: PropsWithChildren) {
   return (
-    <div className="flex min-h-screen min-w-full flex-col bg-background">
-      <nav className="flex h-[64px] items-center justify-between border-b border-border px-4 shadow-md">
+    <>
+      <nav className="fixed top-0 z-50 w-full bg-background flex items-center justify-between border-b border-border lg:px-10 px-5 py-3 shadow-md">
         <Logo />
         <ThemeSwitcher />
       </nav>
-      {children}
-    </div>
+      <div className="flex min-h-screen min-w-full flex-col bg-background pt-10">
+        {children}
+      </div>
+    </>
   );
 }
