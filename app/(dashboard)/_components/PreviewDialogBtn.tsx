@@ -16,7 +16,7 @@ export default function PreviewDialogBtn() {
           Preview
         </Button>
       </DialogTrigger>
-      <DialogContent className="flex h-screen max-h-screen w-screen max-w-full grow flex-col gap-0 p-0">
+      <DialogContent className="flex h-full w-screen max-w-full grow flex-col gap-0 p-0">
         <div className="border-b px-4 py-2">
           <p className="text-xl font-bold">Form Preview</p>
           <p className="text-sm text-muted-foreground">
