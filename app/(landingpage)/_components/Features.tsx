@@ -39,9 +39,9 @@ export default function Features() {
             )}
           </h2>
           <p className="max-w-[900px] md:text-xl/relaxed lg:text-base/relaxed">
-            Dhanhid Form is your key to effortless form building – design and
+            Dhan Form is your key to effortless form building – design and
             personalize your forms and surveys effortlessly with our intuitive
-            drag-and-drop form builder.
+            drag-and-drop components.
           </p>
         </motion.div>
         <motion.div

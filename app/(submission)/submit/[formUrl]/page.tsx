@@ -16,7 +16,7 @@ export async function generateMetadata({
   }
   return {
     title: `Form Submission ${METADATA.exTitle}`,
-    description: "Form Submission in Dhanhid Form - Simple Form Builder",
+    description: "Form Submission Page in Dhan Form - Simple Form Builder",
     alternates: {
       canonical: `${process.env.DOMAIN}/submit/${params.formUrl}`,
     },

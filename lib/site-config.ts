@@ -23,7 +23,7 @@ export const featuresItem = [
 
 export const hero = {
   heading:
-    "Build forms **effortlessly** \nwith powerful \n**drag and drop** form builder",
+    "Build forms **effortlessly** \nwith powerful \n**drag and drop** components",
 };
 
 export const features = {

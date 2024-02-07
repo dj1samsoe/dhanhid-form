@@ -27,7 +27,7 @@ export default function CallToAction() {
           ))}
         </h2>
         <p className="mt-4 text-muted-foreground">
-          Unlock the Code: Dhanhid Form Now Accessible on GitHub!
+          Unlock the Code: Dhan Form Now Accessible on GitHub!
         </p>
         <Button
           asChild
