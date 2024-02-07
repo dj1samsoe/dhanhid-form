@@ -9,6 +9,7 @@ import { ElementsType, FormElements } from "./FormElements";
 import MobileSidebar from "./MobileSidebar";
 import DesktopSidebar from "./DesktopSidebar";
 import useIsMobile from "@/hooks/useIsMobile";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default function Designer({ formId }: { formId: number }) {
   const {
@@ -123,20 +124,20 @@ export default function Designer({ formId }: { formId: number }) {
   return (
     <div className="flex md:flex-row flex-col h-full w-full">
       <div
-        className="w-full md:h-full h-[100vh] p-4"
+        className="w-full h-full p-4 overflow-hidden"
         onClick={() => {
           if (selectedElement) setSelectedElement(null);
         }}
       >
-        <div
+        <ScrollArea
           ref={droppable.setNodeRef}
           className={cn(
-            "bg-background max-w-[960px] h-full m-auto rounded-xl flex flex-col flex-grow items-center justify-start flex-1 overflow-auto",
+            "bg-background max-w-[960px] h-full rounded-xl flex flex-col items-center justify-center overflow-auto",
             droppable.isOver && "ring-2 ring-primary ring-inset"
           )}
         >
           {!droppable.isOver && elements.length === 0 && (
-            <p className="flex grow items-center text-3xl font-bold text-muted-foreground">
+            <p className="flex items-center justify-center pt-24 md:pt-48 text-3xl font-bold text-muted-foreground">
               Drop here
             </p>
           )}
@@ -156,7 +157,7 @@ export default function Designer({ formId }: { formId: number }) {
               ))}
             </div>
           )}
-        </div>
+        </ScrollArea>
       </div>
       {isMobile ? <MobileSidebar /> : <DesktopSidebar />}
     </div>
