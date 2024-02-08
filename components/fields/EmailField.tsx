@@ -27,7 +27,7 @@ import { Switch } from "../ui/switch";
 import { Textarea } from "../ui/textarea";
 import { cn } from "@/lib/utils";
 
-const type: ElementsType = "TextField";
+const type: ElementsType = "EmailField";
 
 const extraAttributes = {
   label: "Email Field",

@@ -72,7 +72,7 @@ export default function DesignerElementWrapper({
         ref={draggable.setNodeRef}
         {...draggable.attributes}
         {...draggable.listeners}
-        className="relative flex h-[100px] flex-col rounded-md text-foreground ring-1 ring-inset ring-accent hover:cursor-pointer"
+        className="relative flex h-[100px] overflow-y-hidden flex-col rounded-md text-foreground ring-1 ring-inset ring-accent hover:cursor-pointer"
         onMouseOver={() => setMouseOver(true)}
         onMouseLeave={() => setMouseOver(false)}
         onClick={(e) => {
