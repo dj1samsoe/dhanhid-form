@@ -21,8 +21,11 @@ const CustomModal = () => {
   const [isClose, setIsClose] = useState(false);
 
   useEffect(() => {
+    const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile/i.test(
+      navigator.userAgent
+    );
     // Tampilkan modal saat halaman pertama kali dirender dan modal belum dirender sebelumnya
-    if (!modalRendered && !isOpen && !isClose) {
+    if (!modalRendered && !isOpen && !isClose && isMobile) {
       setModalRendered(true);
       setIsOpen(true);
     }
