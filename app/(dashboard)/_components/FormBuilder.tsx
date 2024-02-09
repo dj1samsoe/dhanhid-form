@@ -108,8 +108,8 @@ export default function FormBuilder({ form }: { form: Form }) {
     <DndContext sensors={sensors}>
       <main className="flex w-full flex-col">
         <div className="flex md:flex-row flex-col space-y-2 items-center md:justify-between gap-3 border-b-2 p-4 text-xl">
-          <h2 className="truncate font-semibold">
-            <span className="mr-2 text-muted-foreground">Form :</span>
+          <h2 className="font-semibold md:text-start text-center">
+            {/* <span className="mr-2 text-muted-foreground">Title :</span> */}
             {form.name}
           </h2>
           <div className="flex items-center gap-2">
