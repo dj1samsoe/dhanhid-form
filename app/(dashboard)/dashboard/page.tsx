@@ -29,7 +29,11 @@ export default function DashboardPage() {
       </div>
       <Separator className="my-6" />
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <Suspense fallback={<FormCardSkeleton />}>
+        <Suspense
+          fallback={[...Array(3)].map((_, i) => (
+            <FormCardSkeleton key={i} />
+          ))}
+        >
           <FormCards />
         </Suspense>
       </div>
